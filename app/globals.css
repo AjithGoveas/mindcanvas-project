@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+/* Theme Fonts */
+@theme {
+    --font-poppins: 'Poppins', sans-serif;
+    --font-cormorant: 'Cormorant', serif;
+}
+
+/* Global Styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    @apply bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 transition-colors duration-300;
+}
+
+/* Articles */
+.article {
+    @apply flex flex-col gap-6 font-poppins text-lg tracking-wide leading-relaxed mb-20 text-neutral-800 dark:text-neutral-200;
+}
+
+/* Headings */
+.article > h1 {
+    @apply font-cormorant text-5xl text-center tracking-tight font-bold mt-4 mb-6 text-neutral-900 dark:text-neutral-100;
+}
+
+.article > h2 {
+    @apply font-cormorant text-4xl tracking-tight font-semibold mt-4 mb-4 text-neutral-800 dark:text-neutral-200;
+}
+
+.article > h3 {
+    @apply font-cormorant text-3xl tracking-tight font-medium mt-3 mb-3 text-neutral-700 dark:text-neutral-300;
+}
+
+/* Lists */
+.article > ol, .article > ul {
+    @apply flex flex-col mx-8 gap-2 pl-6 leading-loose;
+}
+
+.article > ol {
+    @apply list-decimal;
+}
+
+.article > ul {
+    @apply list-disc;
+}
+
+/* Code Blocks */
+.article > pre {
+    @apply bg-neutral-900 text-neutral-50 p-5 rounded-lg overflow-auto shadow-md border border-neutral-700;
+}
+
+/* Blockquotes */
+.article > blockquote {
+    @apply pl-6 italic border-l-4 border-neutral-500 text-neutral-600 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-800 py-2 px-4 rounded-md shadow-sm;
+}
+
+/* Links */
+.article > a {
+    @apply text-blue-600 underline hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-500 transition-all duration-200;
+}
+
+/* Images */
+.article > p > img {
+    @apply w-3/4 max-w-screen-md mx-auto rounded-lg shadow-md my-6 transition-opacity duration-500;
+}
+
+/* Tables */
+.article > table {
+    @apply w-full table-auto border-collapse border border-neutral-500 shadow-md my-5 rounded-lg overflow-hidden;
+}
+
+.article > table th,
+.article > table td {
+    @apply border border-neutral-400 p-4 text-left;
+}
+
+.article > table th {
+    @apply bg-neutral-300 dark:bg-neutral-700 font-semibold text-neutral-800 dark:text-neutral-200;
+}
+
+/* Horizontal Rule */
+.article > hr {
+    @apply my-6 border-t border-neutral-400 dark:border-neutral-600 opacity-75;
+}
+
+/* Inline Code */
+.article > code {
+    @apply bg-neutral-800 text-neutral-50 px-2 py-1 rounded-md text-sm font-mono shadow-sm;
+}
+
+/* Buttons */
+.button {
+    @apply px-5 py-3 rounded-lg text-neutral-900 dark:text-neutral-100 bg-neutral-300 dark:bg-neutral-700 transition hover:bg-neutral-400 dark:hover:bg-neutral-600;
+}
