@@ -4,12 +4,12 @@ category: "Innovation"
 date: "03-06-2025"
 author: "Ajith Goveas, Ashish S K, Arjun Shenoy"
 tags: ["Technology", "AI", "Creativity", "Future"]
-image: "https://images.unsplash.com/photo-1548092372-0d1bd40894a3"
+image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485"
 ---
 
 # 🚀 Exploring the Future of Tech & Creativity
 
-![AI Creativity](https://images.unsplash.com/photo-1548092372-0d1bd40894a3)
+![AI Creativity](https://images.unsplash.com/photo-1620712943543-bcc4688e7485)
 
 The intersection of **technology** and **creativity** is shaping a bold new era. From AI-generated art to blockchain-based storytelling, the possibilities are endless.
 
@@ -22,17 +22,17 @@ With AI tools like Copilot assisting with content creation, **writers** and **de
 ### 🔥 Key Areas of Growth
 
 #### **1. AI-Generated Art & Music**
-![AI Art](https://th.bing.com/th/id/OIP.eOHQrbQAj6w8uBdACBsDsgHaHa?w=171&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7)
+![AI Art](https://images.unsplash.com/photo-1548092372-0d1bd40894a3)
 
 Platforms like **Midjourney** & **DALL·E** are revolutionizing digital art, allowing creators to generate stunning visuals with minimal effort.
 
 #### **2. Smart Content Creation**
-![Blockchain Storytelling](https://th.bing.com/th/id/OIP.0ZE-oWHdX4vHY9MX6aCtGgHaHa?w=166&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7)
+![Blockchain Storytelling](https://images.unsplash.com/photo-1620712943543-bcc4688e7485)
 
 Blockchain-based storytelling is emerging as a **new frontier**, enabling decentralized and transparent content creation.
 
 #### **3. Immersive Technologies**
-![VR & AR Storytelling](https://arvrjourney.com/the-future-of-storytelling-and-education-how-virtual-reality-is-changing-narrative-experiences-24907fa6ebfa)
+![VR & AR Storytelling](https://images.unsplash.com/photo-1677756119517-756a188d2d94)
 
 VR and AR are enhancing storytelling through **interactive experiences**, making narratives more engaging and immersive.
 

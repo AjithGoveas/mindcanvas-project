@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React from "react";
 import type {ArticleItem} from "@/types";
+import Image from "next/image";
 
 interface Props {
     category: string;
@@ -29,10 +30,12 @@ const ArticleItemList: React.FC<Props> = ({category, articles}) => {
                         >
                             {/* Thumbnail */}
                             {article.imageUrl && (
-                                <img
+                                <Image
                                     src={article.imageUrl}
                                     alt={article.title}
-                                    className="w-24 h-24 rounded-lg shadow-md transition-transform duration-300 hover:scale-105"
+                                    width={80}
+                                    height={80}
+                                    className="rounded-lg shadow-md transition-transform duration-300 hover:scale-105"
                                 />
                             )}
 

@@ -4,12 +4,12 @@ category: "Innovation & Creativity"
 date: "03-06-2025"
 author: "Sophia Mendes, Rahul Verma, Emily Chen"
 tags: ["Digital Art", "Technology", "Culture", "Future"]
-image: "https://th.bing.com/th/id/OIP.eOHQrbQAj6w8uBdACBsDsgHaHa"
+image: "https://images.unsplash.com/photo-1677756119517-756a188d2d94"
 ---
 
 # 🎨 The Digital Renaissance: How Technology is Reshaping Art & Culture
 
-![Digital Art](https://images.unsplash.com/photo-1548092372-0d1bd40894a3)
+![Digital Art](https://images.unsplash.com/photo-1677756119517-756a188d2d94)
 
 In an era where **pixels and algorithms** merge with **paintbrushes and creativity**, the world is experiencing a **Digital Renaissance**. Artists, musicians, and storytellers are finding new ways to express themselves through technological advancements.
 
