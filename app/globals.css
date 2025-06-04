@@ -33,6 +33,18 @@ body {
     @apply font-cormorant text-3xl tracking-tight font-medium mt-3 mb-3 text-neutral-700 dark:text-neutral-300;
 }
 
+.article > h4 {
+    @apply font-cormorant text-2xl tracking-tight font-medium mt-3 mb-3 text-neutral-600 dark:text-neutral-400;
+}
+
+.article > h5 {
+    @apply font-cormorant text-xl tracking-tight font-normal mt-2 mb-2 text-neutral-500 dark:text-neutral-500;
+}
+
+.article > h6 {
+    @apply font-cormorant text-lg tracking-tight font-light mt-2 mb-2 text-neutral-400 dark:text-neutral-600;
+}
+
 /* Lists */
 .article > ol, .article > ul {
     @apply flex flex-col mx-8 gap-2 pl-6 leading-loose;
@@ -46,9 +58,32 @@ body {
     @apply list-disc;
 }
 
-/* Code Blocks */
 .article > pre {
-    @apply bg-neutral-900 text-neutral-50 p-5 rounded-lg overflow-auto shadow-md border border-neutral-700;
+    background-color: #1e1e1e; /* Slightly deeper dark theme */
+    color: #dcdcdc; /* Softer and more readable text color */
+    font-family: 'Fira Code', 'Courier New', monospace; /* Modern monospaced font */
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* More defined shadow */
+    border: 1px solid #3a3d41; /* Slightly brighter border for better separation */
+    line-height: 1.6; /* Improved readability */
+    word-break: break-word; /* Prevents long words from overflowing */
+}
+
+/* Make sure scrollbar in code blocks is styled subtly */
+.article > pre::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.article > pre::-webkit-scrollbar-thumb {
+    background: #555; /* Scrollbar thumb color */
+    border-radius: 3px;
+}
+
+.article > pre:hover {
+    border-color: #5a5d61; /* Brighter border on hover */
 }
 
 /* Blockquotes */

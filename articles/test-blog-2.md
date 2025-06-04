@@ -1,6 +1,6 @@
 ---
 title: "The Digital Renaissance: How Technology is Reshaping Art & Culture"
-category: "Innovation & Creativity"
+category: "Creativity"
 date: "03-06-2025"
 author: "Sophia Mendes, Rahul Verma, Emily Chen"
 tags: ["Digital Art", "Technology", "Culture", "Future"]
@@ -47,3 +47,4 @@ Text can be **bold**, *italic*, or ***bold and italic***.
 ```js
 const inspiration = "Creativity meets technology!";
 console.log(inspiration);
+```
