@@ -1,20 +1,29 @@
 import type {Metadata} from "next";
-import {Cormorant_Garamond, Poppins} from "next/font/google";
+import {Cormorant_Garamond, Fira_Mono, Poppins} from "next/font/google";
 import "./globals.css";
 import React from "react";
+import {ThemeProvider} from "@/components/theme-provider";
+import {ModeToggle} from "@/components/toggle-theme";
 
 const poppins = Poppins({
     subsets: ["latin"],
     display: "swap",
     variable: "--font-poppins",
-    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
+    weight: "400",
 });
 
-const cormorantGaramond = Cormorant_Garamond({
+const cormorant_Garamond = Cormorant_Garamond({
     subsets: ["latin"],
+    variable: "--font-cormorant-garamond",
     display: "swap",
-    variable: "--font-cormorant",
-    weight: ["400", "500", "600", "700"]
+    weight: "400",
+});
+
+const fira_Mono = Fira_Mono({
+    subsets: ["latin"],
+    weight: "400",
+    display: "swap",
+    variable: "--font-fira-mono",
 });
 
 export const metadata: Metadata = {
@@ -30,11 +39,22 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
         <body
-            className={`${cormorantGaramond.variable} ${poppins.variable} antialiased`}
+            className={`${poppins.variable} ${cormorant_Garamond.variable} ${fira_Mono.variable} antialiased`}
         >
-        {children}
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+        >
+            {/* Floating Mode Toggle */}
+            <div className="fixed top-4 right-4 z-50 print:hidden">
+                <ModeToggle/>
+            </div>
+
+            {children}
+        </ThemeProvider>
         </body>
         </html>
     );
 }
-

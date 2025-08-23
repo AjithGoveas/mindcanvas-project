@@ -1,31 +1,31 @@
-import { getCategorizedArticles } from "@/lib/articles";
-import ArticleItemList from "@/components/ArticleListItem";
+import {getCategorizedArticles} from "@/lib/articles";
+import {ArticleItemList} from "@/components/ArticleListItem";
 
 export default function Home() {
     const categorizedArticles = getCategorizedArticles();
 
-    console.log(categorizedArticles);
-
     return (
-        <section className="mx-auto w-11/12 md:w-3/5 mt-16 flex flex-col gap-20 mb-24
-                           bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 transition-colors duration-300">
-            {/* Header with refined typography and spacing */}
-            <header className="font-cormorant font-medium text-6xl text-neutral-900 dark:text-neutral-100 text-center tracking-tight">
-                <h1>MindCanvas</h1>
+        <main className="container mx-auto px-6 sm:px-8 lg:px-12 xl:px-20 py-20">
+            <header className="flex flex-col items-center text-center gap-6 mb-24">
+                <h1 className="font-serif text-6xl md:text-7xl font-bold tracking-tight text-foreground">
+                    MindCanvas
+                </h1>
+                <p className="max-w-2xl text-lg md:text-xl text-muted-foreground font-sans leading-relaxed">
+                    Explore a curated collection of articles across diverse topics. Discover insights, knowledge, and
+                    inspiration in every canvas.
+                </p>
             </header>
 
-            {/* Article section with better grid layout and spacing */}
-            <section className="md:grid md:grid-cols-2 flex flex-col gap-12">
+            <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">
                 {categorizedArticles &&
-                    Object.keys(categorizedArticles).map((category) => (
+                    Object.entries(categorizedArticles).map(([category, articles]) => (
                         <ArticleItemList
-                            category={category}
-                            articles={categorizedArticles[category]}
                             key={category}
+                            category={category}
+                            articles={articles}
                         />
-                    ))
-                }
+                    ))}
             </section>
-        </section>
+        </main>
     );
 }
