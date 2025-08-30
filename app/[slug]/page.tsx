@@ -16,9 +16,9 @@ const Article = async ({params}: { params: Promise<{ slug: string }> }) => {
                     className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition"
                 >
                     <ArrowLeftIcon width={18}/>
-                    <span>Back to Home</span>
+                    <span className="font-sans">Back to Home</span>
                 </Link>
-                <time className="text-xs sm:text-sm">{articleData.date.toString()}</time>
+                <time className="text-xs sm:text-sm font-serif">{articleData.date.toString()}</time>
             </div>
 
             {/* Article Content */}

@@ -1,29 +1,29 @@
 import type {Metadata} from "next";
-import {Cormorant_Garamond, Fira_Mono, Poppins} from "next/font/google";
+import {IBM_Plex_Mono, Libre_Baskerville, Lora} from "next/font/google";
 import "./globals.css";
 import React from "react";
 import {ThemeProvider} from "@/components/theme-provider";
 import {ModeToggle} from "@/components/toggle-theme";
 
-const poppins = Poppins({
+const libreBaskerville = Libre_Baskerville({
+    weight: ["400", "700"],
     subsets: ["latin"],
+    variable: "--font-sans",
     display: "swap",
-    variable: "--font-poppins",
-    weight: "400",
 });
 
-const cormorant_Garamond = Cormorant_Garamond({
+const lora = Lora({
+    weight: ["400", "500", "600", "700"],
     subsets: ["latin"],
-    variable: "--font-cormorant-garamond",
+    variable: "--font-serif",
     display: "swap",
-    weight: "400",
 });
 
-const fira_Mono = Fira_Mono({
+const ibmPlexMono = IBM_Plex_Mono({
+    weight: ["400", "500", "600", "700"],
     subsets: ["latin"],
-    weight: "400",
+    variable: "--font-mono",
     display: "swap",
-    variable: "--font-fira-mono",
 });
 
 export const metadata: Metadata = {
@@ -39,7 +39,11 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
         <body
-            className={`${poppins.variable} ${cormorant_Garamond.variable} ${fira_Mono.variable} antialiased`}
+            className={`
+            ${libreBaskerville.variable}
+            ${lora.variable}
+            ${ibmPlexMono.variable} 
+          antialiased`}
         >
         <ThemeProvider
             attribute="class"
