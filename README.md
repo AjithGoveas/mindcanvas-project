@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MindCanvas
+*A Curated Collection of Ideas, Painted in Markdown.*
 
-## Getting Started
+MindCanvas is a modern, high-performance blog engine built for speed, simplicity, and a premium reading experience. It leverages the latest web technologies to deliver a seamless content-delivery pipeline.
 
-First, run the development server:
+## 🚀 How It Works
+MindCanvas follows a "Content-as-Code" philosophy:
+1.  **Markdown Source**: Articles are authored in standard Markdown (`.md`) files located in the `/articles` directory.
+2.  **Metadata (Frontmatter)**: Each article includes YAML frontmatter for structured data like `title`, `date`, `category`, and `author`.
+3.  **Parsing & Processing**: 
+    - `gray-matter` extracts metadata and raw content.
+    - `remark` and `remark-html` transform Markdown into clean, semantic HTML.
+    - `remark-gfm` adds support for GitHub Flavored Markdown (tables, task lists, etc.).
+4.  **Static Generation**: Next.js 15 (App Router) pre-renders these pages for lightning-fast load times.
+5.  **Dynamic Rendering**: Each article is dynamically routed via `app/[slug]`, ensuring a clean URL structure.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Key Features
+-   **⏱️ Automated Reading Time**: Instant calculation of estimated reading time for every article.
+-   **📂 Smart Categorization**: Automatic grouping of articles by categories defined in frontmatter.
+-   **🌗 Dark Mode Ready**: Native support for dark/light themes using `next-themes`.
+-   **🎨 Premium Typography**: A curated mix of Serif and Sans-Serif fonts for maximum readability.
+-   **📱 Fully Responsive**: Optimized for every screen size, from mobile to ultra-wide monitors.
+-   **⚡ Powered by Turbopack**: Blazing-fast development cycles and build times.
+
+## 🛠️ Tech Stack
+-   **Core**: [Next.js 15 (App Router)](https://nextjs.org), [React 19](https://react.dev)
+-   **Styling**: [Tailwind CSS 4](https://tailwindcss.com), [Radix UI](https://www.radix-ui.com), [Lucide Icons](https://lucide.dev)
+-   **Content**: Markdown, Gray-matter, Remark, Moment.js
+-   **Language**: [TypeScript](https://www.typescriptlang.org)
+
+## 🏗️ Project Structure
+```text
+├── app/          # Next.js App Router (Layouts, Pages, Routes)
+├── articles/     # The source of truth: Your Markdown files
+├── components/   # Reusable UI components (Radix/Shadcn inspired)
+├── lib/          # Core logic: Article parsing, helper functions
+├── public/       # Static assets (Images, Favicons)
+└── types/        # TypeScript type definitions
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🏁 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1.  **Install Dependencies**:
+    ```bash
+    npm install
+    ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2.  **Run Development Server**:
+    ```bash
+    npm run dev
+    ```
 
-## Learn More
+3.  **Add a New Article**:
+    Simply drop a `.md` file into the `/articles` folder with the following frontmatter:
+    ```yaml
+    ---
+    title: "My New Adventure"
+    date: "11-05-2026"
+    category: "Philosophy"
+    author: "Your Name"
+    excerpt: "A brief summary of your thoughts."
+    image: "/images/hero.jpg"
+    ---
+    # Content goes here
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+## 🗺️ Future Roadmap
+- [ ] **Editor Section**: A section where the user can edit the markdown files and save them to the articles folder.
+- [ ] **Database**: Add a database to store the articles.
+- [ ] **Search**: Global search functionality to find articles by title, tag, or content.
+- [ ] **Newsletter**: Integrated subscription form for reader updates.
+- [ ] **Comments**: Giscus or Utterances integration for community engagement.
+- [ ] **Image Optimization**: Automatic thumbnail generation and blur-up loading.
+- [ ] **RSS Feed**: XML feed for blog aggregators and readers.
+- [ ] **SEO Optimization**: Automated meta-tag generation based on article metadata.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+*Built with ❤️ by [Ajith Goveas](https://ajith-goveas-portfolio.vercel.app/)*.
