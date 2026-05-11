@@ -67,12 +67,12 @@ MindCanvas follows a "Content-as-Code" philosophy:
 ## 🗺️ Future Roadmap
 - [ ] **Editor Section**: A section where the user can edit the markdown files and save them to the articles folder.
 - [ ] **Database**: Add a database to store the articles.
-- [ ] **Search**: Global search functionality to find articles by title, tag, or content.
+- [x] **Search**: Global search functionality to find articles by title, tag, or content.
 - [ ] **Newsletter**: Integrated subscription form for reader updates.
 - [ ] **Comments**: Giscus or Utterances integration for community engagement.
 - [ ] **Image Optimization**: Automatic thumbnail generation and blur-up loading.
 - [ ] **RSS Feed**: XML feed for blog aggregators and readers.
-- [ ] **SEO Optimization**: Automated meta-tag generation based on article metadata.
+- [x] **SEO Optimization**: Automated meta-tag generation based on article metadata.
 
 ---
 *Built with ❤️ by [Ajith Goveas](https://ajith-goveas-portfolio.vercel.app/)*.

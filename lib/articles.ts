@@ -16,8 +16,8 @@ const calculateReadingTime = (content: string): number => {
     return Math.ceil(wordCount / wordsPerMinute);
 };
 
-const getSortedArticles = (): ArticleItem[] => {
-    const fileNames = fs.readdirSync(articlesDirectory);
+export const getSortedArticles = (): ArticleItem[] => {
+    const fileNames = fs.readdirSync(articlesDirectory).filter(fileName => fileName.endsWith(".md"));
 
     const allArticlesData = fileNames.map((fileName): ArticleItem => {
         const id = fileName.replace(/\.md$/, "");
@@ -26,35 +26,25 @@ const getSortedArticles = (): ArticleItem[] => {
         const fileContents = fs.readFileSync(fullPath, "utf-8");
 
         const matterResult = matter(fileContents);
+        const format = "DD-MM-YYYY";
+        const dateTimestamp = moment(matterResult.data.date, format).valueOf();
 
         return {
             id: id,
             title: matterResult.data.title,
             date: matterResult.data.date,
+            dateTimestamp: dateTimestamp,
             category: matterResult.data.category,
             author: matterResult.data.author,
             tags: matterResult.data.tags ?? [],
             excerpt: matterResult.data.excerpt ?? "",
             contentHtml: "", // Filled in `getArticleData`
             imageUrl: matterResult.data.image ?? null,
-            readingTime: 0, // Calculated in `getArticleData`
+            readingTime: calculateReadingTime(matterResult.content),
         };
     });
 
-    return allArticlesData.sort((a, b) => {
-        const format = "DD-MM-YYYY";
-
-        const dateOne = moment(a.date, format);
-        const dateTwo = moment(b.date, format);
-
-        if (dateOne.isBefore(dateTwo)) {
-            return -1;
-        } else if (dateTwo.isAfter(dateOne)) {
-            return 1;
-        } else {
-            return 0;
-        }
-    });
+    return allArticlesData.sort((a, b) => (b.dateTimestamp || 0) - (a.dateTimestamp || 0));
 };
 
 export const getCategorizedArticles = (): Record<string, ArticleItem[]> => {

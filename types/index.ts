@@ -9,4 +9,5 @@ export type ArticleItem = {
     contentHtml: string; // Full processed HTML content from Markdown
     imageUrl?: string; // Optional featured image URL
     readingTime: number; // Estimated reading time in minutes
+    dateTimestamp?: number; // Internal timestamp for efficient sorting
 };

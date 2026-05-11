@@ -3,297 +3,188 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ================================================= */
+/* ===== COFFEE & NEWSPAPER - DESIGN SYSTEM v3 ===== */
+/* ================================================= */
+
 :root {
-    --background: #f5f1e6;
-    --foreground: #4a3f35;
-    --card: #fffcf5;
-    --card-foreground: #4a3f35;
-    --popover: #fffcf5;
-    --popover-foreground: #4a3f35;
-    --primary: #a67c52;
-    --primary-foreground: #ffffff;
-    --secondary: #e2d8c3;
-    --secondary-foreground: #5c4d3f;
-    --muted: #ece5d8;
-    --muted-foreground: #7d6b56;
-    --accent: #d4c8aa;
-    --accent-foreground: #4a3f35;
-    --destructive: #b54a35;
-    --destructive-foreground: #ffffff;
-    --border: #dbd0ba;
-    --input: #dbd0ba;
-    --ring: #a67c52;
-    --chart-1: #a67c52;
-    --chart-2: #8d6e4c;
-    --chart-3: #735a3a;
-    --chart-4: #b3906f;
-    --chart-5: #c0a080;
-    --sidebar: #ece5d8;
-    --sidebar-foreground: #4a3f35;
-    --sidebar-primary: #a67c52;
-    --sidebar-primary-foreground: #ffffff;
-    --sidebar-accent: #d4c8aa;
-    --sidebar-accent-foreground: #4a3f35;
-    --sidebar-border: #dbd0ba;
-    --sidebar-ring: #a67c52;
-    --font-sans: Libre Baskerville, serif;
-    --font-serif: Lora, serif;
-    --font-mono: IBM Plex Mono, monospace;
-    --radius: 0.25rem;
-    --shadow-2xs: 2px 3px 5px 0px hsl(28 13% 20% / 0.06);
-    --shadow-xs: 2px 3px 5px 0px hsl(28 13% 20% / 0.06);
-    --shadow-sm: 2px 3px 5px 0px hsl(28 13% 20% / 0.12), 2px 1px 2px -1px hsl(28 13% 20% / 0.12);
-    --shadow: 2px 3px 5px 0px hsl(28 13% 20% / 0.12), 2px 1px 2px -1px hsl(28 13% 20% / 0.12);
-    --shadow-md: 2px 3px 5px 0px hsl(28 13% 20% / 0.12), 2px 2px 4px -1px hsl(28 13% 20% / 0.12);
-    --shadow-lg: 2px 3px 5px 0px hsl(28 13% 20% / 0.12), 2px 4px 6px -1px hsl(28 13% 20% / 0.12);
-    --shadow-xl: 2px 3px 5px 0px hsl(28 13% 20% / 0.12), 2px 8px 10px -1px hsl(28 13% 20% / 0.12);
-    --shadow-2xl: 2px 3px 5px 0px hsl(28 13% 20% / 0.30);
-    --tracking-normal: 0em;
-    --spacing: 0.25rem;
+    /* Antique Paper & Roasted Coffee Palette */
+    --background: #f4f1ea; /* Aged Parchment */
+    --foreground: #2c1e11; /* Deep Espresso */
+    
+    --card: #f9f7f2;
+    --card-foreground: #2c1e11;
+    
+    --primary: #5d4037; /* Roasted Bean */
+    --primary-foreground: #f4f1ea;
+    
+    --secondary: #e8e1d5;
+    --secondary-foreground: #3e2723;
+    
+    --muted: #e8e1d5;
+    --muted-foreground: #6d4c41;
+    
+    --accent: #d7ccc8;
+    --accent-foreground: #3e2723;
+    
+    --border: #d7ccc8;
+    --ring: #5d4037;
+
+    /* Typography - Newspaper Classical */
+    --font-sans: "Libre Baskerville", serif;
+    --font-serif: "Lora", serif;
+    --font-mono: "IBM Plex Mono", monospace;
+    
+    --radius: 0rem; /* Sharp newspaper edges */
+    
+    /* Fluid Steps */
+    --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.15rem);
+    --step-1: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
+    --step-2: clamp(1.5rem, 1.3rem + 1vw, 2.25rem);
+    --step-3: clamp(2rem, 1.8rem + 1.5vw, 3rem);
+    --step-4: clamp(2.5rem, 2rem + 3vw, 5rem);
 }
 
 .dark {
-    --background: #2d2621;
-    --foreground: #ece5d8;
-    --card: #3a322c;
-    --card-foreground: #ece5d8;
-    --popover: #3a322c;
-    --popover-foreground: #ece5d8;
-    --primary: #c0a080;
-    --primary-foreground: #2d2621;
-    --secondary: #4a4039;
-    --secondary-foreground: #ece5d8;
-    --muted: #3a322c;
-    --muted-foreground: #c5bcac;
-    --accent: #59493e;
-    --accent-foreground: #ece5d8;
-    --destructive: #b54a35;
-    --destructive-foreground: #ffffff;
-    --border: #4a4039;
-    --input: #4a4039;
-    --ring: #c0a080;
-    --chart-1: #c0a080;
-    --chart-2: #b3906f;
-    --chart-3: #a67c52;
-    --chart-4: #8d6e4c;
-    --chart-5: #735a3a;
-    --sidebar: #2d2621;
-    --sidebar-foreground: #ece5d8;
-    --sidebar-primary: #c0a080;
-    --sidebar-primary-foreground: #2d2621;
-    --sidebar-accent: #59493e;
-    --sidebar-accent-foreground: #ece5d8;
-    --sidebar-border: #4a4039;
-    --sidebar-ring: #c0a080;
-    --font-sans: Libre Baskerville, serif;
-    --font-serif: Lora, serif;
-    --font-mono: IBM Plex Mono, monospace;
-    --radius: 0.25rem;
-    --shadow-2xs: 2px 3px 5px 0px hsl(28 13% 20% / 0.06);
-    --shadow-xs: 2px 3px 5px 0px hsl(28 13% 20% / 0.06);
-    --shadow-sm: 2px 3px 5px 0px hsl(28 13% 20% / 0.12), 2px 1px 2px -1px hsl(28 13% 20% / 0.12);
-    --shadow: 2px 3px 5px 0px hsl(28 13% 20% / 0.12), 2px 1px 2px -1px hsl(28 13% 20% / 0.12);
-    --shadow-md: 2px 3px 5px 0px hsl(28 13% 20% / 0.12), 2px 2px 4px -1px hsl(28 13% 20% / 0.12);
-    --shadow-lg: 2px 3px 5px 0px hsl(28 13% 20% / 0.12), 2px 4px 6px -1px hsl(28 13% 20% / 0.12);
-    --shadow-xl: 2px 3px 5px 0px hsl(28 13% 20% / 0.12), 2px 8px 10px -1px hsl(28 13% 20% / 0.12);
-    --shadow-2xl: 2px 3px 5px 0px hsl(28 13% 20% / 0.30);
+    /* Night Coffee Palette */
+    --background: #1b1613; /* Dark Roast */
+    --foreground: #d7ccc8; /* Latte Cream */
+    
+    --card: #231d1a;
+    --card-foreground: #d7ccc8;
+    
+    --primary: #a1887f; /* Warm Mocha */
+    --primary-foreground: #1b1613;
+    
+    --secondary: #2d2621;
+    --secondary-foreground: #d7ccc8;
+    
+    --muted: #2d2621;
+    --muted-foreground: #8d6e63;
+    
+    --border: #3e2723;
+    --ring: #a1887f;
 }
 
 @theme inline {
     --color-background: var(--background);
     --color-foreground: var(--foreground);
-    --color-card: var(--card);
-    --color-card-foreground: var(--card-foreground);
-    --color-popover: var(--popover);
-    --color-popover-foreground: var(--popover-foreground);
     --color-primary: var(--primary);
     --color-primary-foreground: var(--primary-foreground);
-    --color-secondary: var(--secondary);
-    --color-secondary-foreground: var(--secondary-foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
     --color-muted: var(--muted);
     --color-muted-foreground: var(--muted-foreground);
-    --color-accent: var(--accent);
-    --color-accent-foreground: var(--accent-foreground);
-    --color-destructive: var(--destructive);
-    --color-destructive-foreground: var(--destructive-foreground);
     --color-border: var(--border);
-    --color-input: var(--input);
-    --color-ring: var(--ring);
-    --color-chart-1: var(--chart-1);
-    --color-chart-2: var(--chart-2);
-    --color-chart-3: var(--chart-3);
-    --color-chart-4: var(--chart-4);
-    --color-chart-5: var(--chart-5);
-    --color-sidebar: var(--sidebar);
-    --color-sidebar-foreground: var(--sidebar-foreground);
-    --color-sidebar-primary: var(--sidebar-primary);
-    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-    --color-sidebar-accent: var(--sidebar-accent);
-    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-    --color-sidebar-border: var(--sidebar-border);
-    --color-sidebar-ring: var(--sidebar-ring);
-
     --font-sans: var(--font-sans);
-    --font-mono: var(--font-mono);
     --font-serif: var(--font-serif);
-
-    --radius-sm: calc(var(--radius) - 4px);
-    --radius-md: calc(var(--radius) - 2px);
-    --radius-lg: var(--radius);
-    --radius-xl: calc(var(--radius) + 4px);
-
-    --shadow-2xs: var(--shadow-2xs);
-    --shadow-xs: var(--shadow-xs);
-    --shadow-sm: var(--shadow-sm);
-    --shadow: var(--shadow);
-    --shadow-md: var(--shadow-md);
-    --shadow-lg: var(--shadow-lg);
-    --shadow-xl: var(--shadow-xl);
-    --shadow-2xl: var(--shadow-2xl);
-}
-
-body {
-    letter-spacing: var(--tracking-normal);
+    --font-mono: var(--font-mono);
 }
 
 /* ========================= */
-/* ===== Global Styles ===== */
+/* ===== Global Resets ===== */
 /* ========================= */
 @layer base {
-    * {
-        @apply border-border outline-ring/50;
-    }
-
     body {
-        @apply bg-background text-foreground antialiased;
+        @apply bg-background text-foreground antialiased selection:bg-primary selection:text-primary-foreground;
+        font-family: var(--font-serif); /* Serif as primary */
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        background-size: 200px 200px;
+        background-blend-mode: multiply;
+        opacity: 0.98;
     }
-
-    html {
-        @apply scroll-smooth;
+    
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-serif font-black tracking-tight uppercase;
+        letter-spacing: -0.02em;
     }
 }
 
-/* ========================= */
-/* ===== Article Styling ===== */
-/* ========================= */
+/* ========================================= */
+/* ===== BROADSHEET ARTICLE RENDERING ===== */
+/* ========================================= */
+
 .article {
-    @apply font-sans tracking-normal text-base sm:text-[1.0625rem] md:text-[1.125rem] leading-relaxed sm:leading-[1.75] md:leading-[1.85] text-foreground;
-    font-feature-settings: "liga" 1, "kern" 1;
-    background-color: var(--background);
-    @apply px-5 sm:px-6 md:px-8 py-10 sm:py-12;
-    max-width: 768px;
-    margin-inline: auto;
-}
-
-/* Headings */
-.article > h1 {
-    @apply font-serif text-4xl sm:text-5xl text-center tracking-tight font-bold mt-8 mb-10 text-foreground;
-}
-
-.article > h2 {
-    @apply font-serif text-3xl sm:text-4xl tracking-tight font-semibold mt-8 mb-6 text-foreground;
-}
-
-.article > h3 {
-    @apply font-serif text-2xl sm:text-3xl tracking-tight font-medium mt-6 mb-4 text-muted-foreground;
-}
-
-.article > h4 {
-    @apply font-serif text-xl sm:text-2xl tracking-tight font-medium mt-5 mb-3 text-muted-foreground/80;
-}
-
-.article > h5 {
-    @apply font-serif text-lg sm:text-xl tracking-tight font-normal mt-4 mb-2 text-muted-foreground/70;
-}
-
-.article > h6 {
-    @apply font-serif text-base sm:text-lg tracking-tight font-light mt-3 mb-2 text-muted-foreground/60;
-}
-
-/* Lists */
-.article > ol,
-.article > ul {
-    @apply flex flex-col gap-2 pl-6 leading-loose text-muted-foreground text-sm sm:text-base;
-    padding-inline-start: 1.25rem;
-}
-
-.article > ol {
-    @apply list-decimal;
-}
-
-.article > ul {
-    @apply list-disc;
-}
-
-/* Code Blocks */
-.article > pre {
-    @apply bg-card text-foreground font-mono p-4 sm:p-5 rounded-lg overflow-x-auto shadow-md border border-border/80;
-    background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.02) 1px, transparent 0);
-    background-size: 4px 4px;
+    @apply relative mx-auto max-w-[800px] py-16 px-6 sm:px-12 md:px-20;
+    font-size: var(--step-0);
     line-height: 1.6;
-    word-break: break-word;
-    font-size: 0.875rem;
+    text-align: justify;
+    hyphens: auto;
 }
 
-.article > pre::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+/* Newspaper Header within Article */
+.article h2 {
+    @apply text-3xl sm:text-4xl mt-16 mb-8 border-y border-foreground/20 py-4 text-center font-serif tracking-normal normal-case italic;
 }
 
-.article > pre::-webkit-scrollbar-thumb {
-    @apply bg-muted-foreground/50 rounded-lg;
+.article h3 {
+    @apply text-xl sm:text-2xl mt-12 mb-4 font-serif font-bold uppercase tracking-widest border-b border-foreground/10 pb-2;
 }
 
-.article > pre:hover {
-    @apply border-border;
+.article p {
+    @apply mb-6 opacity-95;
+    text-indent: 0;
 }
 
-/* Blockquotes */
-.article > blockquote {
-    @apply pl-6 italic border-l-4 border-muted-foreground text-muted-foreground bg-muted/30 py-3 px-5 sm:px-6 rounded-md shadow-sm;
-    font: var(--font-serif);
-    font-size: 1rem;
+/* The Newspaper Drop Cap */
+.article > p:first-of-type::first-letter {
+    @apply float-left font-serif font-black mr-3 text-primary leading-[0.7];
+    font-size: 5rem;
+    initial-letter: 2;
 }
 
-/* Links */
-.article > a {
-    @apply text-primary underline hover:text-primary/70 transition-colors duration-200 font-medium;
+/* Broadsheet Blockquotes */
+.article blockquote {
+    @apply relative my-12 py-8 px-10 border-y-2 border-primary/30 text-2xl sm:text-3xl font-serif italic text-center;
+    line-height: 1.3;
 }
 
-/* Images */
-.article > p > img {
-    filter: grayscale(15%) contrast(90%) brightness(98%);
-    @apply w-full sm:w-3/4 max-w-screen-md mx-auto rounded-md shadow-md my-6 opacity-90 hover:opacity-100 transition-opacity duration-500;
+/* Newspaper Lists */
+.article ul, .article ol {
+    @apply my-8 pl-8 space-y-3 text-left;
+}
+
+.article ul { @apply list-disc; }
+.article ol { @apply list-decimal; }
+
+/* Inked Code Blocks */
+.article pre {
+    @apply my-10 bg-card border border-border p-6 shadow-inner overflow-x-auto;
+    background-image: radial-gradient(var(--border) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.article pre code {
+    @apply font-mono text-sm text-foreground/80;
+}
+
+/* Images as Newspaper Prints */
+.article img {
+    @apply my-12 w-full grayscale-[0.8] contrast-125 border border-foreground/10 p-1 bg-white shadow-sm hover:grayscale-0 transition-all duration-700;
+}
+
+/* Rule Lines */
+.article hr {
+    @apply my-16 border-0 h-px bg-foreground/20;
 }
 
 /* Tables */
-.article > table {
-    @apply w-full table-auto border-collapse border border-border shadow-md my-6 rounded-lg overflow-x-auto bg-card text-sm sm:text-base;
+.article table {
+    @apply my-12 w-full border-t-2 border-b-2 border-foreground/40 text-left text-sm;
 }
 
-.article > table th {
-    @apply bg-muted/40 text-muted-foreground uppercase tracking-wide font-sans text-xs sm:text-sm;
-    letter-spacing: 0.05em;
+.article th {
+    @apply border-b border-foreground/20 py-3 font-black uppercase tracking-widest;
 }
 
-.article > table td {
-    @apply border border-border p-4 text-left text-foreground/90;
+.article td {
+    @apply py-3 border-b border-foreground/10;
 }
 
-/* Horizontal Rule */
-.article > hr {
-    @apply my-8 border-t border-border opacity-60;
-}
-
-/* Inline Code */
-.article > code {
-    @apply bg-muted/70 text-muted-foreground px-2 py-1 rounded-md text-xs sm:text-sm font-mono shadow-sm;
-}
-
-/* Buttons */
-.button {
-    @apply px-5 py-3 rounded-lg text-primary-foreground bg-primary transition hover:bg-primary/70 shadow-sm border border-border/60;
-    font-weight: 500;
-    letter-spacing: 0.03em;
-    font-size: 0.875rem;
+/* Horizontal spacing for broader content */
+@media (min-width: 1024px) {
+    .article {
+        column-count: 1; /* Keeping it 1 for readability but can toggle for true newspaper look */
+        column-gap: 3rem;
+    }
 }
