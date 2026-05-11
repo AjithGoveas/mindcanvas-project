@@ -37,12 +37,12 @@
     
     --radius: 0rem; /* Sharp newspaper edges */
     
-    /* Fluid Steps */
-    --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.15rem);
-    --step-1: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
-    --step-2: clamp(1.5rem, 1.3rem + 1vw, 2.25rem);
-    --step-3: clamp(2rem, 1.8rem + 1.5vw, 3rem);
-    --step-4: clamp(2.5rem, 2rem + 3vw, 5rem);
+    /* Fluid Steps - Recalibrated for better balance */
+    --step-0: clamp(1rem, 0.95rem + 0.15vw, 1.1rem);
+    --step-1: clamp(1.15rem, 1.05rem + 0.3vw, 1.35rem);
+    --step-2: clamp(1.35rem, 1.2rem + 0.6vw, 1.75rem);
+    --step-3: clamp(1.75rem, 1.5rem + 1vw, 2.5rem);
+    --step-4: clamp(2.25rem, 2rem + 2vw, 4rem);
 }
 
 .dark {
@@ -85,13 +85,36 @@
 /* ===== Global Resets ===== */
 /* ========================= */
 @layer base {
+    html {
+        font-size: 16px;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+        @apply scroll-smooth;
+    }
+
     body {
         @apply bg-background text-foreground antialiased selection:bg-primary selection:text-primary-foreground;
-        font-family: var(--font-serif); /* Serif as primary */
+        font-family: var(--font-serif);
+        -webkit-text-size-adjust: 100%;
+        -moz-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+        
+        /* REMOVED: text-rendering: optimizeLegibility; */
+        /* REMOVED: background noise properties from the body layer */
+    }
+
+    /* ADD THIS: Offload the heavy noise filter to a hardware-accelerated background layer */
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-color: var(--background);
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         background-size: 200px 200px;
         background-blend-mode: multiply;
         opacity: 0.98;
+        pointer-events: none;
+        z-index: -1;
     }
     
     h1, h2, h3, h4, h5, h6 {
@@ -128,8 +151,8 @@
 
 /* The Newspaper Drop Cap */
 .article > p:first-of-type::first-letter {
-    @apply float-left font-serif font-black mr-3 text-primary leading-[0.7];
-    font-size: 5rem;
+    @apply float-left font-serif font-black mr-3 text-primary leading-[0.8];
+    font-size: 4rem;
     initial-letter: 2;
 }
 
@@ -160,7 +183,7 @@
 
 /* Images as Newspaper Prints */
 .article img {
-    @apply my-12 w-full grayscale-[0.8] contrast-125 border border-foreground/10 p-1 bg-white shadow-sm hover:grayscale-0 transition-all duration-700;
+    @apply my-12 w-full grayscale-[0.8] contrast-125 border border-foreground/10 p-1 bg-white shadow-sm hover:grayscale-0 duration-700;
 }
 
 /* Rule Lines */

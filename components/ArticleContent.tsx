@@ -66,15 +66,15 @@ export const ArticleContent: React.FC<Props> = ({articleData}) => {
 
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                         {/* Title & Lead Story (7 cols) */}
-                        <div className="lg:col-span-7 flex flex-col gap-10">
-                            <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-foreground leading-[0.9]">
+                        <div className="lg:col-span-7 flex flex-col gap-8">
+                            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-foreground leading-[0.95]">
                                 {articleData.title}
                             </h1>
                             
                             {articleData.excerpt && (
-                                <div className="relative border-l-4 border-primary pl-8 py-4 my-4">
-                                    <span className="block text-[9px] font-black uppercase tracking-[0.4em] text-primary mb-3 opacity-60">Abstract</span>
-                                    <p className="text-2xl md:text-3xl font-serif italic text-foreground/80 leading-[1.3] tracking-tight">
+                                <div className="relative border-l-4 border-primary pl-6 py-2 my-2">
+                                    <span className="block text-[8px] font-black uppercase tracking-[0.3em] text-primary mb-2 opacity-60">Abstract</span>
+                                    <p className="text-lg md:text-xl font-serif italic text-foreground/80 leading-[1.4] tracking-tight">
                                         {articleData.excerpt}
                                     </p>
                                 </div>

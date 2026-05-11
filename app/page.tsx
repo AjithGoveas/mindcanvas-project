@@ -34,7 +34,7 @@ export default function Home() {
                 </div>
 
                 <div className="flex flex-col items-center gap-6">
-                    <h1 className="font-serif text-7xl sm:text-8xl md:text-9xl font-black tracking-tighter text-foreground leading-none">
+                    <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl font-black tracking-tighter text-foreground leading-none">
                         MindCanvas
                     </h1>
                     <div className="w-full max-w-sm h-px bg-foreground/20" />
