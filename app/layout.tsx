@@ -3,7 +3,6 @@ import {IBM_Plex_Mono, Libre_Baskerville, Lora} from "next/font/google";
 import "./globals.css";
 import React from "react";
 import {ThemeProvider} from "@/components/theme-provider";
-import {ModeToggle} from "@/components/toggle-theme";
 
 const libreBaskerville = Libre_Baskerville({
     weight: ["400", "700"],

@@ -1,43 +1,34 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+/* Inject KaTeX structural font distributions natively */
+@import "katex/dist/katex.min.css";
 
 @custom-variant dark (&:is(.dark *));
 
 /* ================================================= */
-/* ===== COFFEE & NEWSPAPER - DESIGN SYSTEM v3 ===== */
+/* ===== COFFEE & NEWSPAPER - DESIGN SYSTEM v8 ===== */
 /* ================================================= */
 
 :root {
-    /* Antique Paper & Roasted Coffee Palette */
-    --background: #f4f1ea; /* Aged Parchment */
-    --foreground: #2c1e11; /* Deep Espresso */
-    
-    --card: #f9f7f2;
+    --background: #f4f1ea;
+    --foreground: #2c1e11;
+    --card: #fdfbf7;
     --card-foreground: #2c1e11;
-    
-    --primary: #5d4037; /* Roasted Bean */
+    --primary: #4e342e;
     --primary-foreground: #f4f1ea;
-    
     --secondary: #e8e1d5;
     --secondary-foreground: #3e2723;
-    
     --muted: #e8e1d5;
     --muted-foreground: #6d4c41;
-    
     --accent: #d7ccc8;
     --accent-foreground: #3e2723;
-    
     --border: #d7ccc8;
-    --ring: #5d4037;
+    --ring: #4e342e;
 
-    /* Typography - Newspaper Classical */
     --font-sans: "Libre Baskerville", serif;
     --font-serif: "Lora", serif;
     --font-mono: "IBM Plex Mono", monospace;
-    
-    --radius: 0rem; /* Sharp newspaper edges */
-    
-    /* Fluid Steps - Recalibrated for better balance */
+
     --step-0: clamp(1rem, 0.95rem + 0.15vw, 1.1rem);
     --step-1: clamp(1.15rem, 1.05rem + 0.3vw, 1.35rem);
     --step-2: clamp(1.35rem, 1.2rem + 0.6vw, 1.75rem);
@@ -46,24 +37,18 @@
 }
 
 .dark {
-    /* Night Coffee Palette */
-    --background: #1b1613; /* Dark Roast */
-    --foreground: #d7ccc8; /* Latte Cream */
-    
-    --card: #231d1a;
+    --background: #1c1815;
+    --foreground: #d7ccc8;
+    --card: #25201c;
     --card-foreground: #d7ccc8;
-    
-    --primary: #a1887f; /* Warm Mocha */
-    --primary-foreground: #1b1613;
-    
-    --secondary: #2d2621;
-    --secondary-foreground: #d7ccc8;
-    
-    --muted: #2d2621;
-    --muted-foreground: #8d6e63;
-    
-    --border: #3e2723;
-    --ring: #a1887f;
+    --primary: #bcaaa4;
+    --primary-foreground: #1c1815;
+    --secondary: #3e332d;
+    --secondary-foreground: #efebe9;
+    --muted: #3e332d;
+    --muted-foreground: #a1887f;
+    --border: #4e3f38;
+    --ring: #bcaaa4;
 }
 
 @theme inline {
@@ -81,9 +66,6 @@
     --font-mono: var(--font-mono);
 }
 
-/* ========================= */
-/* ===== Global Resets ===== */
-/* ========================= */
 @layer base {
     html {
         font-size: 16px;
@@ -94,120 +76,303 @@
 
     body {
         @apply bg-background text-foreground antialiased selection:bg-primary selection:text-primary-foreground;
-        font-family: var(--font-serif);
-        -webkit-text-size-adjust: 100%;
-        -moz-text-size-adjust: 100%;
-        text-size-adjust: 100%;
-        
-        /* REMOVED: text-rendering: optimizeLegibility; */
-        /* REMOVED: background noise properties from the body layer */
+        font-family: var(--font-serif), serif;
     }
 
-    /* ADD THIS: Offload the heavy noise filter to a hardware-accelerated background layer */
+    /* Subtle Vintage Noise Overlay */
     body::before {
         content: "";
         position: fixed;
         inset: 0;
         background-color: var(--background);
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
         background-size: 200px 200px;
-        background-blend-mode: multiply;
-        opacity: 0.98;
         pointer-events: none;
         z-index: -1;
     }
-    
+
     h1, h2, h3, h4, h5, h6 {
-        @apply font-serif font-black tracking-tight uppercase;
-        letter-spacing: -0.02em;
+        @apply font-serif text-foreground;
+        letter-spacing: -0.01em;
     }
 }
 
-/* ========================================= */
-/* ===== BROADSHEET ARTICLE RENDERING ===== */
-/* ========================================= */
+/* ================================================== */
+/* ===== THE COMPLETE GAZETTE RENDERING ENGINE ====== */
+/* ================================================== */
 
 .article {
-    @apply relative mx-auto max-w-[800px] py-16 px-6 sm:px-12 md:px-20;
+    /* Narrowed to 720px for optimal reading measure (characters per line) */
+    @apply relative mx-auto max-w-180 py-20 px-6 sm:px-12;
     font-size: var(--step-0);
-    line-height: 1.6;
+    line-height: 1.85;
     text-align: justify;
+    text-justify: inter-word;
     hyphens: auto;
+    color: var(--foreground);
 }
 
-/* Newspaper Header within Article */
+/* 1. Headings (Editorial Hierarchy) */
+.article h1 {
+    @apply text-4xl sm:text-5xl md:text-6xl mb-12 mt-16 font-black uppercase text-center border-b-[6px] border-double border-foreground/20 pb-8 scroll-mt-24 tracking-tight;
+    line-height: 1.1;
+}
+
+/* Redesigned H2: Major Broadsheet Section */
 .article h2 {
-    @apply text-3xl sm:text-4xl mt-16 mb-8 border-y border-foreground/20 py-4 text-center font-serif tracking-normal normal-case italic;
+    @apply text-2xl sm:text-3xl mt-24 mb-10 py-6 border-t-4 border-b border-foreground/80 font-serif font-black uppercase tracking-widest text-center scroll-mt-24;
 }
 
+/* Redesigned H3: Sub-section with dotted baseline */
 .article h3 {
-    @apply text-xl sm:text-2xl mt-12 mb-4 font-serif font-bold uppercase tracking-widest border-b border-foreground/10 pb-2;
+    @apply text-xl sm:text-2xl mt-16 mb-6 font-serif italic font-bold border-b-2 border-dotted border-foreground/30 pb-4 scroll-mt-24 text-center sm:text-left;
 }
 
+.article h4 {
+    @apply text-lg sm:text-xl mt-12 mb-4 font-bold uppercase tracking-widest text-primary/90 scroll-mt-24;
+}
+
+.article h5 {
+    @apply text-base sm:text-lg mt-10 mb-3 font-bold italic tracking-tight scroll-mt-24 border-l-2 border-primary/50 pl-4;
+}
+
+.article h6 {
+    @apply text-sm sm:text-base mt-8 mb-2 font-bold uppercase opacity-70 tracking-widest scroll-mt-24;
+}
+
+/* 2. Text Blocks & Lead-in Styling */
 .article p {
-    @apply mb-6 opacity-95;
-    text-indent: 0;
+    @apply mb-8 opacity-90 leading-relaxed;
 }
 
-/* The Newspaper Drop Cap */
+/* Elegant Broadsheet Drop Cap */
 .article > p:first-of-type::first-letter {
-    @apply float-left font-serif font-black mr-3 text-primary leading-[0.8];
-    font-size: 4rem;
-    initial-letter: 2;
+    @apply float-left font-black mr-5 text-primary leading-[0.75];
+    font-size: 5.5rem;
+    padding-top: 0.15rem;
+    initial-letter: 3;
 }
 
-/* Broadsheet Blockquotes */
+/* Journalistic Lead-in (Small Caps on first line) */
+.article > p:first-of-type::first-line {
+    @apply tracking-widest uppercase text-[0.85em] font-bold text-foreground/80;
+}
+
+/* 3. Inline Elements */
+.article a {
+    @apply text-primary font-semibold border-b border-primary/30 hover:border-primary hover:bg-primary/5 transition-all;
+    text-decoration: none;
+}
+
+.article strong {
+    @apply font-bold text-foreground opacity-100;
+}
+
+.article em {
+    @apply italic text-foreground/90;
+}
+
+.article mark {
+    @apply bg-primary/10 text-foreground px-1 py-0.5;
+}
+
+.article kbd {
+    @apply inline-block px-1.5 py-0.5 bg-foreground/5 border border-foreground/20 rounded-xs font-mono text-[0.85em] font-bold text-foreground mx-0.5 shadow-sm;
+}
+
+/* 4. Editorial Pull Quotes */
 .article blockquote {
-    @apply relative my-12 py-8 px-10 border-y-2 border-primary/30 text-2xl sm:text-3xl font-serif italic text-center;
-    line-height: 1.3;
+    @apply relative my-16 py-8 pl-8 sm:pl-12 border-l-[6px] border-double border-primary/60 bg-transparent text-2xl sm:text-3xl font-serif italic text-foreground/80;
+    line-height: 1.5;
 }
 
-/* Newspaper Lists */
+.article blockquote p {
+    @apply mb-4;
+}
+
+.article blockquote p:last-child {
+    @apply mb-0;
+}
+
+.article blockquote cite {
+    @apply block mt-6 text-[0.65rem] font-bold uppercase tracking-[0.2em] opacity-60 not-italic;
+}
+
+/* 5. Lists */
 .article ul, .article ol {
-    @apply my-8 pl-8 space-y-3 text-left;
+    @apply my-10 pl-6 sm:pl-10 space-y-3 text-left opacity-90;
 }
 
-.article ul { @apply list-disc; }
-.article ol { @apply list-decimal; }
+.article li {
+    @apply pl-2 relative leading-relaxed;
+}
 
-/* Inked Code Blocks */
+.article ul > li::before {
+    content: "•";
+    @apply absolute -left-5 top-0 text-primary font-black text-xl leading-none;
+}
+
+.article ol {
+    @apply list-decimal marker:font-bold marker:text-foreground/70;
+}
+
+.article li.task-list-item {
+    @apply list-none pl-0;
+}
+
+.article li.task-list-item::before {
+    @apply hidden;
+}
+
+.article input[type="checkbox"] {
+    @apply mr-3 w-4 h-4 accent-primary align-middle rounded-none border border-foreground/40;
+}
+
+/* 6. Professional Code Blocks (Teletype Style) */
 .article pre {
-    @apply my-10 bg-card border border-border p-6 shadow-inner overflow-x-auto;
-    background-image: radial-gradient(var(--border) 1px, transparent 1px);
-    background-size: 20px 20px;
+    @apply my-16 bg-card border-t-4 border-b-4 border-foreground/20 p-8 shadow-inner overflow-x-auto relative;
+}
+
+.article pre::before {
+    content: "TECHNICAL ADDENDUM";
+    @apply absolute top-0 left-0 bg-foreground/10 px-4 py-1 text-[9px] font-bold uppercase tracking-widest text-foreground/70 border-b border-r border-foreground/20;
 }
 
 .article pre code {
-    @apply font-mono text-sm text-foreground/80;
+    @apply block mt-4 font-mono text-[0.9em] text-foreground/85 whitespace-pre;
+    line-height: 1.7;
+    tab-size: 4;
 }
 
-/* Images as Newspaper Prints */
-.article img {
-    @apply my-12 w-full grayscale-[0.8] contrast-125 border border-foreground/10 p-1 bg-white shadow-sm hover:grayscale-0 duration-700;
+.article code:not(pre code) {
+    @apply bg-foreground/4 text-foreground/90 px-1.5 py-0.5 border border-foreground/10 font-mono text-[0.85em];
 }
 
-/* Rule Lines */
-.article hr {
-    @apply my-16 border-0 h-px bg-foreground/20;
+/* Scrollbar for Code */
+.article pre::-webkit-scrollbar {
+    @apply h-2;
 }
 
-/* Tables */
+.article pre::-webkit-scrollbar-track {
+    @apply bg-transparent;
+}
+
+.article pre::-webkit-scrollbar-thumb {
+    @apply bg-foreground/20 hover:bg-foreground/40 rounded-none;
+}
+
+/* 7. Data Tables (Journal Style) */
 .article table {
-    @apply my-12 w-full border-t-2 border-b-2 border-foreground/40 text-left text-sm;
+    @apply my-16 w-full text-left text-sm sm:text-base border-t-2 border-b-2 border-foreground/40;
+    border-collapse: collapse;
 }
 
 .article th {
-    @apply border-b border-foreground/20 py-3 font-black uppercase tracking-widest;
+    @apply py-4 px-4 font-bold uppercase tracking-wider border-b-2 border-foreground/30 text-xs text-foreground/80 align-bottom;
 }
 
 .article td {
-    @apply py-3 border-b border-foreground/10;
+    @apply py-4 px-4 border-b border-foreground/10 opacity-90 align-top;
 }
 
-/* Horizontal spacing for broader content */
-@media (min-width: 1024px) {
+.article tr:last-child td {
+    @apply border-b-0;
+}
+
+.article tr:nth-child(even) td {
+    @apply bg-foreground/2;
+}
+
+/* 8. Media & Figures */
+.article img {
+    @apply my-14 w-full border border-foreground/15 p-1.5 bg-card shadow-sm mx-auto;
+    filter: sepia(0.1) contrast(1.05);
+}
+
+.article figure {
+    @apply my-16 text-center;
+}
+
+.article figcaption {
+    @apply mt-4 text-[0.7rem] font-bold uppercase tracking-[0.15em] opacity-60 inline-block text-center max-w-[80%];
+}
+
+/* 9. Typographic Dividers (Section Marks) */
+.article hr {
+    @apply my-24 border-0 h-px bg-foreground/20 relative w-full overflow-visible;
+}
+
+.article hr::after {
+    content: "§";
+    @apply absolute left-1/2 -top-3.5 -translate-x-1/2 bg-background px-6 font-serif text-xl text-foreground/40;
+}
+
+/* 10. Footnotes & Metadata */
+.article small {
+    @apply text-[0.8em] opacity-70 font-serif block my-6 border-t border-foreground/10 pt-4;
+}
+
+.article abbr {
+    @apply no-underline border-b border-dotted border-foreground/50 cursor-help;
+}
+
+.article sub, .article sup {
+    @apply text-[0.7em] leading-none relative align-baseline opacity-80;
+}
+
+.article sup {
+    top: -0.5em;
+}
+
+.article sub {
+    bottom: -0.25em;
+}
+
+/* 11. Interactive Elements */
+.article details {
+    @apply my-10 border border-foreground/15 p-6 bg-card/50 shadow-sm;
+}
+
+.article summary {
+    @apply font-bold uppercase tracking-wider text-xs cursor-pointer hover:text-primary transition-colors outline-none;
+}
+
+.article details[open] summary {
+    @apply mb-4 border-b border-foreground/15 pb-3;
+}
+
+/* Inline Equation handling */
+.article .katex {
+    font-size: 1.05em;
+    @apply text-foreground opacity-95 mx-0.5 whitespace-nowrap;
+}
+
+/* Standalone Formula Callout Blocks ($...$) */
+.article .katex-display {
+    @apply my-12 py-6 border-y border-foreground/10 overflow-x-auto overflow-y-hidden text-center w-full max-w-full;
+    @apply bg-foreground/[0.01];
+}
+
+/* Scrollbar tuning for complex mobile mathematical formulas */
+.article .katex-display::-webkit-scrollbar {
+    @apply h-1.5;
+}
+.article .katex-display::-webkit-scrollbar-thumb {
+    @apply bg-foreground/10 hover:bg-foreground/20 rounded-none;
+}
+
+/* 12. Mobile Readability Enhancements */
+@media (max-width: 640px) {
     .article {
-        column-count: 1; /* Keeping it 1 for readability but can toggle for true newspaper look */
-        column-gap: 3rem;
+        @apply py-12 px-5 text-left;
+        hyphens: none;
+    }
+
+    .article blockquote {
+        @apply py-6 px-6 text-xl my-10 mx-0 border-l-4;
+    }
+
+    .article pre {
+        @apply -mx-5 px-5 rounded-none border-x-0;
     }
 }

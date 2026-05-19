@@ -2,9 +2,15 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 import moment from 'moment';
-import {remark} from 'remark';
-import html from 'remark-html';
-import remarkGfm from 'remark-gfm';
+
+// Modern Unified AST Processing Stack
+import {unified} from "unified";
+import remarkParse from "remark-parse";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import remarkRehype from "remark-rehype";
+import rehypeKatex from "rehype-katex";
+import rehypeStringify from "rehype-stringify";
 
 import type {ArticleItem} from "@/types";
 
@@ -66,9 +72,18 @@ export const getArticleData = async (id: string): Promise<ArticleItem> => {
     const fileContents = fs.readFileSync(fullPath, "utf-8");
 
     const matterResult = matter(fileContents);
-    const processedContent = await remark()
-        .use(html)
-        .use(remarkGfm) // Enables better Markdown formatting, including images
+
+    // Upgraded parsing chain to handle GFM Markdown + Inline/Block LaTeX elements
+    const processedContent = await unified()
+        .use(remarkParse)         // Tokenizes the raw input text file
+        .use(remarkGfm)           // Preserves broadsheet Markdown features like columns/tables
+        .use(remarkMath)          // Isolates inline ($) and display ($$) math boundaries
+        .use(remarkRehype)        // Maps Markdown elements into HTML syntax structures
+        .use(rehypeKatex, {       // Compiles LaTeX tokens into optimized DOM elements
+            output: "htmlAndMathml",
+            trust: true
+        })
+        .use(rehypeStringify)     // Serializes structural tree blocks to output strings
         .process(matterResult.content);
 
     const contentHtml = processedContent.toString();
@@ -87,4 +102,3 @@ export const getArticleData = async (id: string): Promise<ArticleItem> => {
         readingTime,
     };
 };
-
