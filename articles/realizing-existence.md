@@ -1,9 +1,10 @@
 ---
+issueNumber: 1
 title: "Realizing Existence as Co-existence at All Levels"
 category: "UHV Blog"
 date: "04-06-2025"
 author: "Ajith Goveas, Aniket De, Arjun Shenoy, Ashish Shenoy, Krrish Raj"
-tags: ["CoExistence", "EthicalLiving", "SustainableHarmony", "UniversalHumanValues"]
+tags: ["Co-Existence", "Ethical Living", "Sustainable Harmony", "Universal Human Values"]
 image: "https://images.unsplash.com/photo-1517732306149-e8f829eb588a"
 ---
 

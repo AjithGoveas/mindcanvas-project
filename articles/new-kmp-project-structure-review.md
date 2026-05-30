@@ -1,4 +1,5 @@
 ---
+issueNumber: 3
 title: "The 2026 KMP Update: Why We Are Finally Saying Goodbye to 'composeApp'"
 category: "Mobile Development"
 date: "19-05-2026"

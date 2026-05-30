@@ -1,4 +1,5 @@
 ---
+issueNumber: 2
 title: "From Prototype to Production: Architecting a Full-Stack Local AI Chatbot"
 category: "System Design"
 date: "12-05-2026"

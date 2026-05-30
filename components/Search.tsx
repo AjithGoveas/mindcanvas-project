@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import {IconSearch, IconX, IconFileText, IconCalendar, IconTag, IconCommand} from "@tabler/icons-react";
 import { ArticleItem } from "@/types";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 interface Props {

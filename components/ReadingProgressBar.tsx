@@ -19,7 +19,7 @@ export const ReadingProgressBar: React.FC = () => {
 
     return (
         <div
-            className="fixed top-0 left-0 h-[3px] bg-primary z-[100] transition-all duration-75 ease-out opacity-80"
+            className="fixed top-0 left-0 h-0.75 bg-primary z-100 transition-all duration-75 ease-out opacity-80"
             style={{width: `${progress}%`}}
         />
     );

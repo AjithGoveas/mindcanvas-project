@@ -37,6 +37,7 @@ export const getSortedArticles = (): ArticleItem[] => {
 
         return {
             id: id,
+            issueNumber: matterResult.data.issueNumber ?? null,
             title: matterResult.data.title,
             date: matterResult.data.date,
             dateTimestamp: dateTimestamp,
@@ -92,6 +93,7 @@ export const getArticleData = async (id: string): Promise<ArticleItem> => {
     return {
         id,
         contentHtml,
+        issueNumber: matterResult.data.issueNumber ?? null,
         title: matterResult.data.title,
         category: matterResult.data.category,
         date: moment(matterResult.data.date, "DD-MM-YYYY").format("MMMM Do YYYY"),

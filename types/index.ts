@@ -1,5 +1,6 @@
 export type ArticleItem = {
     id: string;
+    issueNumber?: number | string;
     title: string;
     date: string; // Format: "DD-MM-YYYY"
     author: string;
