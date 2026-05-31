@@ -374,6 +374,20 @@
     @apply bg-foreground/2;
 }
 
+/* Scrollbar for Tables */
+.article table::-webkit-scrollbar {
+    /* width for vertical scrollbars, height for horizontal */
+    @apply h-2 w-2;
+}
+
+.article table::-webkit-scrollbar-track {
+    @apply bg-transparent;
+}
+
+.article table::-webkit-scrollbar-thumb {
+    @apply bg-foreground/20 hover:bg-foreground/40 rounded-none;
+}
+
 /* 8. Media & Figures */
 .article img {
     @apply my-14 w-full border-2 border-foreground/10 p-2 bg-card shadow-lg mx-auto h-auto max-w-full block transform rotate-1 hover:rotate-0 transition-transform duration-500;
@@ -384,8 +398,12 @@
     @apply my-16 text-center;
 }
 
+.article figure img {
+    @apply my-0;
+}
+
 .article figcaption {
-    @apply mt-4 text-[10px] font-mono font-bold uppercase tracking-[0.15em] opacity-50 inline-block text-center max-w-[80%];
+    @apply mt-3 text-xs sm:text-[13px] font-serif italic text-foreground/75 block text-center max-w-[90%] mx-auto leading-relaxed border-t border-dotted border-foreground/15 pt-3;
 }
 
 /* 9. Typographic Dividers (Section Marks) */
