@@ -2,7 +2,7 @@
 issueNumber: 2
 title: "From Prototype to Production: Architecting a Full-Stack Local AI Chatbot"
 category: "System Design"
-date: "12-05-2026"
+date: "26-05-2026"
 author: "Ajith Goveas"
 tags: [ "LLM", "Ollama", "Golang", "Android", "Jetpack Compose", "System Architecture" ]
 image: "https://images.unsplash.com/photo-1518770660439-4636190af475"

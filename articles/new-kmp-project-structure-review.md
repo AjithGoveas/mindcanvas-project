@@ -2,7 +2,7 @@
 issueNumber: 3
 title: "The 2026 KMP Update: Why We Are Finally Saying Goodbye to 'composeApp'"
 category: "Mobile Development"
-date: "19-05-2026"
+date: "28-05-2026"
 author: "Ajith Goveas"
 tags: [ "Kotlin Multiplatform", "Android", "Clean Architecture", "Compose 1.11" ]
 image: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=2000&auto=format&fit=crop"
