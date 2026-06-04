@@ -68,6 +68,144 @@ export const getCategorizedArticles = (): Record<string, ArticleItem[]> => {
     return categorizedArticles;
 };
 
+const rehypeImageToFigure = () => {
+    return (tree: any) => {
+        const walk = (node: any) => {
+            if (node.children) {
+                for (let i = 0; i < node.children.length; i++) {
+                    const child = node.children[i];
+                    
+                    // Look ahead: find the next element sibling, skipping whitespace-only text nodes
+                    let figcaptionIndex = -1;
+                    for (let j = i + 1; j < node.children.length; j++) {
+                        const sibling = node.children[j];
+                        if (sibling.type === 'element') {
+                            if (sibling.tagName === 'figcaption') {
+                                figcaptionIndex = j;
+                            }
+                            break; // First element sibling found, stop looking
+                        } else if (sibling.type === 'text' && sibling.value.trim() !== '') {
+                            break; // Non-whitespace text found, stop looking
+                        }
+                    }
+                    const hasFigcaptionSibling = figcaptionIndex !== -1;
+
+                    // Case 1: Paragraph containing a single image, followed by a figcaption sibling
+                    if (
+                        child.type === 'element' && 
+                        child.tagName === 'p' && 
+                        child.children?.length === 1 && 
+                        child.children[0].tagName === 'img' &&
+                        hasFigcaptionSibling
+                    ) {
+                        const img = child.children[0];
+                        const figcaptionNode = node.children[figcaptionIndex];
+                        node.children[i] = {
+                            type: 'element',
+                            tagName: 'figure',
+                            properties: {},
+                            children: [
+                                {
+                                    type: 'element',
+                                    tagName: 'img',
+                                    properties: { ...img.properties },
+                                    children: []
+                                },
+                                {
+                                    type: 'element',
+                                    tagName: 'figcaption',
+                                    properties: { ...figcaptionNode.properties },
+                                    children: [ ...figcaptionNode.children ]
+                                }
+                            ]
+                        };
+                        // Remove the figcaption node from parent list
+                        node.children.splice(figcaptionIndex, 1);
+                        continue;
+                    }
+
+                    // Case 2: Standalone image, followed by a figcaption sibling
+                    if (
+                        child.type === 'element' && 
+                        child.tagName === 'img' &&
+                        hasFigcaptionSibling
+                    ) {
+                        const figcaptionNode = node.children[figcaptionIndex];
+                        node.children[i] = {
+                            type: 'element',
+                            tagName: 'figure',
+                            properties: {},
+                            children: [
+                                {
+                                    type: 'element',
+                                    tagName: 'img',
+                                    properties: { ...child.properties },
+                                    children: []
+                                },
+                                {
+                                    type: 'element',
+                                    tagName: 'figcaption',
+                                    properties: { ...figcaptionNode.properties },
+                                    children: [ ...figcaptionNode.children ]
+                                }
+                            ]
+                        };
+                        // Remove the figcaption node
+                        node.children.splice(figcaptionIndex, 1);
+                        continue;
+                    }
+
+                    // Case 3: Paragraph containing a single image without a sibling figcaption
+                    if (
+                        child.type === 'element' && 
+                        child.tagName === 'p' && 
+                        child.children?.length === 1 && 
+                        child.children[0].tagName === 'img'
+                    ) {
+                        const img = child.children[0];
+                        node.children[i] = {
+                            type: 'element',
+                            tagName: 'figure',
+                            properties: {},
+                            children: [
+                                {
+                                    type: 'element',
+                                    tagName: 'img',
+                                    properties: { ...img.properties },
+                                    children: []
+                                }
+                            ]
+                        };
+                        continue;
+                    }
+
+                    // Case 4: Standalone image without a sibling figcaption
+                    if (child.type === 'element' && child.tagName === 'img') {
+                        node.children[i] = {
+                            type: 'element',
+                            tagName: 'figure',
+                            properties: {},
+                            children: [
+                                {
+                                    type: 'element',
+                                    tagName: 'img',
+                                    properties: { ...child.properties },
+                                    children: []
+                                }
+                            ]
+                        };
+                        continue;
+                    }
+                    
+                    // Recurse into children
+                    walk(child);
+                }
+            }
+        };
+        walk(tree);
+    };
+};
+
 export const getArticleData = async (id: string): Promise<ArticleItem> => {
     const fullPath = path.join(articlesDirectory, `${id}.md`);
     const fileContents = fs.readFileSync(fullPath, "utf-8");
@@ -79,12 +217,13 @@ export const getArticleData = async (id: string): Promise<ArticleItem> => {
         .use(remarkParse)         // Tokenizes the raw input text file
         .use(remarkGfm)           // Preserves broadsheet Markdown features like columns/tables
         .use(remarkMath)          // Isolates inline ($) and display ($$) math boundaries
-        .use(remarkRehype)        // Maps Markdown elements into HTML syntax structures
+        .use(remarkRehype, { allowDangerousHtml: true })        // Maps Markdown elements into HTML syntax structures
         .use(rehypeKatex, {       // Compiles LaTeX tokens into optimized DOM elements
             output: "htmlAndMathml",
             trust: true
         })
-        .use(rehypeStringify)     // Serializes structural tree blocks to output strings
+        .use(rehypeImageToFigure) // Wraps images in figures with captions
+        .use(rehypeStringify, { allowDangerousHtml: true })     // Serializes structural tree blocks to output strings
         .process(matterResult.content);
 
     const contentHtml = processedContent.toString();
