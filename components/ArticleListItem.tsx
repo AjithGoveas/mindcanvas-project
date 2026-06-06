@@ -42,12 +42,24 @@ const BookmarkButton: React.FC<{
 };
 
 const CoffeeMeter: React.FC<{ time: number }> = ({ time }) => {
-    const cupsCount = Math.min(3, Math.max(1, Math.ceil(time / 3)));
+    let classification = "Quick Sip";
+    let cupsCount = 1;
+    if (time > 6) {
+        classification = "Slow Drip";
+        cupsCount = 3;
+    } else if (time >= 3) {
+        classification = "Fresh Brew";
+        cupsCount = 2;
+    }
     const cups = "☕".repeat(cupsCount);
+
     return (
-        <span className="flex items-center gap-1.5 text-[9px] font-mono opacity-65 font-bold uppercase tracking-wider text-foreground/75" title={`${time} min read`}>
+        <span 
+            className="flex items-center gap-1.5 text-[9px] font-mono opacity-70 font-bold uppercase tracking-wider text-foreground/75" 
+            title={`Steep Duration: ~${time} mins`}
+        >
             <span>{cups}</span>
-            <span>{time} Min Read</span>
+            <span>{classification} (~{time} min)</span>
         </span>
     );
 };

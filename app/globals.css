@@ -402,6 +402,46 @@
     @apply my-0;
 }
 
+/* --- Vintage Video Frame Styling (Mobile First) --- */
+.article iframe,
+.article video,
+.video-container {
+    @apply my-14 w-full aspect-video border-4 border-double border-foreground/30 p-1 bg-card shadow-[0_12px_24px_-10px_rgba(0,0,0,0.2),_0_0_0_1px_rgba(0,0,0,0.05)] mx-auto block max-w-full;
+    transform: none;
+    filter: none;
+}
+
+.video-container {
+    @apply relative overflow-hidden;
+}
+
+.video-container iframe,
+.video-container video {
+    @apply absolute top-0 left-0 w-full h-full border-0 p-0 m-0;
+}
+
+/* Desktop-only: photo-plate sepia tint, off-axis tilt, and smooth leveling on hover/play */
+@media (min-width: 641px) {
+    .article iframe,
+    .article video,
+    .video-container {
+        @apply transform -rotate-1 transition-all duration-500 ease-out;
+        filter: sepia(0.15) contrast(1.1) brightness(0.98);
+    }
+    
+    .article iframe:hover,
+    .article video:hover,
+    .article iframe:focus-within,
+    .article video:focus-within,
+    .article iframe:focus,
+    .article video:focus,
+    .video-container:hover,
+    .video-container:focus-within {
+        @apply rotate-0 scale-[1.015] shadow-[0_20px_35px_-10px_rgba(0,0,0,0.3),_0_0_0_1px_rgba(0,0,0,0.1)];
+        filter: none;
+    }
+}
+
 .article figcaption {
     @apply mt-3 text-xs sm:text-[13px] font-serif italic text-foreground/75 block text-center max-w-[90%] mx-auto leading-relaxed border-t border-dotted border-foreground/15 pt-3;
 }

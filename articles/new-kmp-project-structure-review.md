@@ -49,6 +49,8 @@ on [Multi-Module Architecture in KMP](https://www.youtube.com/watch?v=hY09fygeLo
 
 It worked, and it gave us faster build times, but it was a massive chore just to get a clean starting point.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/hY09fygeLoY?si=Fjdu-QWcUP5-w3HK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ---
 
 ## 🚀 The 2026 Default: Clean by Design

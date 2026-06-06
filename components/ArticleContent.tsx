@@ -73,7 +73,7 @@ export const ArticleContent: React.FC<Props> = ({ articleData, relatedArticles }
               title={isBookmarked ? "Remove Bookmark" : "Bookmark Dispatch"}
             >
               <span className="text-xs">{isBookmarked ? "★" : "☆"}</span>
-              <span>{isBookmarked ? "Saved" : "Save"}</span>
+              <span className="hidden sm:inline">{isBookmarked ? "Saved" : "Save"}</span>
             </button>
             <div className="w-px h-3 bg-foreground/20" />
             <button
@@ -86,9 +86,9 @@ export const ArticleContent: React.FC<Props> = ({ articleData, relatedArticles }
               onClick={handleShare}
               className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest hover:text-primary transition-colors cursor-pointer"
             >
-              <IconShare size={14} /> {copied ? "Copied!" : "Share"}
+              <IconShare size={14} /> <span className="hidden sm:inline">{copied ? "Copied!" : "Share"}</span>
             </button>
-            <div className="w-px h-3 bg-foreground/20 hidden sm:block" />
+            <div className="w-px h-3 bg-foreground/20" />
             <ModeToggle />
           </div>
         </div>
@@ -162,8 +162,11 @@ export const ArticleContent: React.FC<Props> = ({ articleData, relatedArticles }
                   <span>{articleData.category}</span>
                 </div>
                 <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-widest">
-                  <span className="opacity-40">Reading Duration</span>
-                  <span>{articleData.readingTime} Minutes</span>
+                  <span className="opacity-40">Brew Duration</span>
+                  <span className="flex items-center gap-1.5 font-mono">
+                    <span>{"☕".repeat(articleData.readingTime > 6 ? 3 : articleData.readingTime >= 3 ? 2 : 1)}</span>
+                    <span>{articleData.readingTime > 6 ? "Slow Drip" : articleData.readingTime >= 3 ? "Fresh Brew" : "Quick Sip"} (~{articleData.readingTime} Mins)</span>
+                  </span>
                 </div>
                 <button
                   onClick={handleShare}

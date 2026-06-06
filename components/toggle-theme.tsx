@@ -15,7 +15,7 @@ export function ModeToggle() {
                 <Button
                     variant="outline"
                     size="icon"
-                    className="bg-background text-foreground border-border hover:bg-muted transition-colors"
+                    className="bg-background text-foreground border-border hover:bg-muted transition-colors shrink-0"
                 >
                     <IconSun
                         className="h-[1.2rem] w-[1.2rem] text-muted-foreground scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90"/>
@@ -26,7 +26,7 @@ export function ModeToggle() {
             </DropdownMenuTrigger>
             <DropdownMenuContent
                 align="end"
-                className="bg-popover text-popover-foreground border border-border shadow-md"
+                className="bg-popover text-popover-foreground border border-border shadow-md z-[100]"
             >
                 <DropdownMenuItem
                     onClick={() => setTheme("light")}
